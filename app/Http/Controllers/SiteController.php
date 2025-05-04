@@ -13,4 +13,10 @@ class SiteController extends Controller
         //especificando a view home
         return view('site.home', compact('usuarios'));
     }
+
+    public function details($id)
+    {
+        $usuario = Usuario::findOrFail($id);
+        return view('site.details', compact('usuario'));
+    }
 }

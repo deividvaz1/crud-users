@@ -36,7 +36,8 @@
                         <div class="col s2">{{ \Carbon\Carbon::parse($usuario->data_nascimento)->format('d/m/Y') }}</div>
                         <div class="col s2">{{ $usuario->telefone }}</div>
                         <div class="col s1 right-align">
-                            <a href="#!" class="secondary-content">
+                            <a href="{{route('site.details', $usuario->id ) }}" class="secondary-content">
+
                                 <i class="material-icons">edit</i>
                             </a>
                         </div>
