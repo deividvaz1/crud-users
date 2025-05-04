@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
-// rotas para direcionar o usuário para a raiz do projeto
-Route::redirect('/', '/usuarios');
+
 Route::resource('usuarios', UsuarioController::class);
+Route::get('', [SiteController::class, 'index'])->name('site.index');
