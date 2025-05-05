@@ -30,9 +30,9 @@
 
 <p><strong>Requisitos Técnicos</strong></p>
 <ul>
-  <li>PHP 8.x ou superior</li>
-  <li>Laravel 10</li>
-  <li>MySQL ou MariaDB</li>
+  <li>PHP 8 ou superior</li>
+  <li>Laravel 10> </li>
+  <li>MySQL</li>
   <li>MaterializeCSS para estilo (opcional)</li>
 </ul>
 
@@ -51,12 +51,15 @@
   <li>Instale as dependências com Composer:<br>
     <code>composer install</code>
   </li>
-  <li>Configure o arquivo <code>.env</code>:<br>
+<ul>
+  <li>Altere o arquivo <code>.env.example</code> para <code>.env</code>.</li>
+  <li>Ajuste as credenciais do banco de dados no <code>.env</code>:
     <ul>
-      <li>Copie <code>.env.example</code> para <code>.env</code></li>
-      <li>Ajuste as credenciais do banco de dados (<code>DB_HOST</code>, <code>DB_DATABASE</code>, <code>DB_USERNAME</code>, <code>DB_PASSWORD</code>)</li>
+      <li><code>DB_CONNECTION</code> para <strong>mysql</strong>, caso deseje usar MySQL.</li>
+      <li><code>DB_HOST</code>, <code>DB_DATABASE</code>, <code>DB_USERNAME</code> e <code>DB_PASSWORD</code> de acordo com suas configurações.</li><br>
     </ul>
   </li>
+</ul>
   <li>Gere a chave de aplicação:<br>
     <code>php artisan key:generate</code>
   </li>
@@ -70,7 +73,7 @@
 
 <p><strong>Uso</strong></p>
 <ul>
-  <li>Acesse o localhost para visualizar a página inicial.</li>
+  <li>Acesse o server para visualizar a página inicial.</li>
 </ul>
 
 <hr>
