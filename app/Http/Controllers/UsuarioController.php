@@ -81,9 +81,11 @@ class UsuarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    //método pra procurar o usuário no banco e fazer a att
     public function edit(string $id)
     {
-        //
+        $usuario = Usuario::findOrFail($id);
+        return view('site.details', compact('usuario'));
     }
 
     /**
@@ -91,7 +93,46 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => "required|email|unique:users,email,{$id}",
+            'cpf' => "required|unique:users,cpf,{$id}",
+            'data_nascimento' => 'required|date',
+            'telefone' => 'required',
+            'password' => 'nullable|string|min:6', // senha é opcional
+        ]);
+
+        try {
+            $pdo = DB::connection()->getPdo();
+
+            // sql update USAndo PDO para manipulação
+            $sql = '
+                UPDATE users
+                SET name = :name, email = :email, cpf = :cpf, data_nascimento = :data_nascimento, telefone = :telefone';
+
+            $params = [
+                ':name' => $request->name,
+                ':email' => $request->email,
+                ':cpf' => $request->cpf,
+                ':data_nascimento' => $request->data_nascimento,
+                ':telefone' => $request->telefone,
+                ':id' => $id,
+            ];
+
+            if (!empty($request->password)) {
+                $sql .= ', password = :password';
+                $params[':password'] = bcrypt($request->password);
+            }
+
+            $sql .= ' WHERE id = :id';
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute($params);
+
+            return redirect()->route('usuarios.index')->with('success', 'Usuário atualizado com sucesso!');
+        } catch (\PDOException $e) {
+            return back()->withErrors(['error' => 'Erro ao atualizar usuário: ' . $e->getMessage()]);
+        }
     }
 
     /**
@@ -99,6 +140,11 @@ class UsuarioController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            DB::table('users')->where('id', $id)->delete();
+            return redirect()->route('site.index')->with('success', 'Usuário excluído com sucesso!');
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'Erro ao excluir usuário: ' . $e->getMessage()]);
+        }
     }
 }

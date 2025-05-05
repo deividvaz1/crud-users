@@ -11,3 +11,5 @@ Route::get('', [SiteController::class, 'index'])->name('site.index');
 Route::get('usuario/{id}', [SiteController::class, 'details'])->name('site.details');
 //rota para criar um usuario
 Route::post('usuarios', [UsuarioController::class, 'store'])->name('usuarios.store');
+//rota para excluir um usuario
+Route::delete('/usuarios/{id}', [UsuarioController::class, 'destroy'])->name('usuarios.destroy');

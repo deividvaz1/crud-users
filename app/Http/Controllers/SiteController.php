@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
-
+//controller pra redirecionar o usuário corretamente
 class SiteController extends Controller
 {
     public function index()

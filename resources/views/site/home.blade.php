@@ -36,10 +36,16 @@
                         <div class="col s2">{{ \Carbon\Carbon::parse($usuario->data_nascimento)->format('d/m/Y') }}</div>
                         <div class="col s2">{{ $usuario->telefone }}</div>
                         <div class="col s1 right-align">
-                            <a href="{{route('site.details', $usuario->id ) }}" class="secondary-content">
-
+                            <a href="{{ route('site.details', $usuario->id) }}" class="secondary-content" title="Editar">
                                 <i class="material-icons">edit</i>
                             </a>
+                            <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" style="border: none; background: none; padding: 0;" title="Excluir">
+                                    <i class="material-icons red-text text-darken-2">delete</i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </li>

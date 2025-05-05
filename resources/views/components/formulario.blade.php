@@ -116,7 +116,7 @@
     </div>
 </div>
 
-<!-- javascript para cuidar da formatação do -->
+<!-- javascript para cuidar da formatação do formulario-->
 <script src="https://unpkg.com/vanilla-masker/build/vanilla-masker.min.js"></script>
 <script>
     VMasker(document.getElementById("cpf")).maskPattern("999.999.999-99");

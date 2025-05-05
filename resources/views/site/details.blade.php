@@ -37,6 +37,12 @@
                     <input type="text" id="telefone" name="telefone" value="{{ $usuario->telefone }}">
                     <label for="telefone" class="active">Telefone</label>
                 </div>
+
+                <div>
+                    <label for="password">Nova Senha (deixe em branco para não alterar)</label>
+                    <input type="password" name="password" id="password" class="input" />
+                </div>
+
             </div>
 
             <div class="card-action">
@@ -44,14 +50,14 @@
             </div>
         </form>
 
-        <!-- Formulário de exclusão separado -->
-        <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este usuário?')">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn red">Excluir</button>
-        </form>
-
     </div>
 </div>
+
+<!-- javascript para cuidar da formatação do formulario-->
+<script src="https://unpkg.com/vanilla-masker/build/vanilla-masker.min.js"></script>
+<script>
+    VMasker(document.getElementById("cpf")).maskPattern("999.999.999-99");
+    VMasker(document.getElementById("telefone")).maskPattern("(99) 99999-9999");
+</script>
 
 @endsection
