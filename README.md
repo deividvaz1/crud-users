@@ -46,7 +46,7 @@
 <p><strong>Instalação</strong></p>
 <ol>
   <li>Clone o repositório:<br>
-    <code>git clone https://github.com/seu-usuario/seu-repositorio.git<br>cd seu-repositorio</code>
+    <code>git clone https://github.com/deividvaz1/crud-users.git<br>cd repositorio</code>
   </li>
   <li>Instale as dependências com Composer:<br>
     <code>composer install</code>
