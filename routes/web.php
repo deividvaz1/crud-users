@@ -9,3 +9,5 @@ Route::resource('usuarios', UsuarioController::class);
 Route::get('', [SiteController::class, 'index'])->name('site.index');
 //rota para ver um usuário por id
 Route::get('usuario/{id}', [SiteController::class, 'details'])->name('site.details');
+//rota para criar um usuario
+Route::post('usuarios', [UsuarioController::class, 'store'])->name('usuarios.store');

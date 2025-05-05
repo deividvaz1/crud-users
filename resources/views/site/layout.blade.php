@@ -18,7 +18,7 @@
         <div class="nav-wrapper container">
           <a href="#" class="brand-logo center">Teste Técnico</a>
             <ul id="nav-mobile" class="left">
-                <li><a href="">Home</a></li>
+                <li><a href="{{route('site.index')}}">Home</a></li>
             </ul>
         </div>
       </nav>
